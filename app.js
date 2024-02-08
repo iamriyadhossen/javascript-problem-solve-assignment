@@ -103,3 +103,35 @@ function password(obj) {
 }
 
 
+/*------------------------------------------------------------------
+[Problem 05]
+Monthly Savings of a Freelancer
+------------------------------------------------------------------- */
+
+function monthlySavings(allPayment, livingCost) {
+    if (!Array.isArray(allPayment) || typeof livingCost !== 'number') {
+        return 'Invalid Input';
+    }
+
+    let totalIncome = 0;
+    let bankTax = 0;
+
+    for (let i = 0; i < allPayment.length; i++) {
+        totalIncome = totalIncome + allPayment[i];
+        if (allPayment[i] >= 3000) {
+            bankTax = bankTax + allPayment[i] * 0.2;
+        }
+    }
+
+    let remainingAmount = totalIncome - bankTax - livingCost;
+
+    if (remainingAmount < 0){
+        return 'earn more';
+    }
+    return remainingAmount;
+}
+
+// console.log(monthlySavings([1000, 2000, 3000], 5400));
+// console.log(monthlySavings([1000, 2000, 2500], 5000));
+// console.log(monthlySavings([900, 2700, 3400], 10000));
+// console.log(monthlySavings(100, [900, 2700, 3400]));
